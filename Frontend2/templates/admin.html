@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Employee Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        .search-container button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Employee Details</h1>
+    <div class="search-container">
+        <input type="text" id="empID" placeholder="Enter Employee ID">
+        <button type="button" onclick="searchEmployee()">Search</button>
+    </div>
+    <table id="employeeTable">
+        <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Designation</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Location</th>
+            <th>Contact No</th>
+            <th>Mail ID</th>
+            <th>Role</th>
+            <th>Type</th>
+        </tr>
+        <!-- Employee details will be populated here -->
+        {{range .Data}}
+        <tr>
+            <td>{{.details.empID}}</td>
+            <td>{{.details.firstName}}</td>
+            <td>{{.details.lastName}}</td>
+            <td>{{.details.designation}}</td>
+            <td>{{.details.gender}}</td>
+            <td>{{.details.dob}}</td>
+            <td>{{.details.location}}</td>
+            <td>{{.details.contactNo}}</td>
+            <td>{{.details.mailID}}</td>
+            <td>{{.details.role}}</td>
+            <td>{{.details.type}}</td>
+        </tr>
+        {{end}}
+    </table>
+
+    <h1>Asset Details</h1>
+    <table id="assetTable">
+        <tr>
+            <th>Employee ID</th>
+            <th>Asset Type</th>
+            <th>Model</th>
+            <th>Operating System</th>
+            <th>Image URL</th>
+            <th>Asset Type</th>
+            <th>Model</th>
+            <th>Image URL</th>
+            <th>Asset Type</th>
+            <th>Model</th>
+            <th>Image URL</th>
+        </tr>
+        <!-- Asset details will be populated here -->
+        {{range .Data}}
+        <tr>
+            <td>{{.details.empID}}</td>
+            <td>Laptop</td>
+            <td>{{.assets.Laptop.modelNumber}}</td>
+            <td>{{.assets.Laptop.operatingSystem}}</td>
+            <td>{{.assets.Laptop.imageurl}}</td>
+            <td>Mouse</td>
+            <td>{{.assets.Mouse.modelnumber}}</td>
+            <td>{{.assets.Mouse.imageurl}}</td>
+            <td>Headphones</td>
+            <td>{{.assets.Headphones.modelnumber}}</td>
+            <td>{{.assets.Headphones.imageurl}}</td>
+        </tr>
+        <tr>
+        </tr>
+        {{end}}
+    </table>
+
+    <script>
+        function searchEmployee() {
+            var empID = document.getElementById("empID").value;
+            var empTable = document.getElementById("employeeTable");
+            var assetTable = document.getElementById("assetTable");
+            var empRows = empTable.getElementsByTagName("tr");
+            var assetRows = assetTable.getElementsByTagName("tr");
+
+            // Search in employee table
+            for (var i = 1; i < empRows.length; i++) {
+                var empCell = empRows[i].getElementsByTagName("td")[0];
+                if (empCell) {
+                    if (empCell.innerHTML.indexOf(empID) > -1) {
+                        empRows[i].style.display = "";
+                    } else {
+                        empRows[i].style.display = "none";
+                    }
+                }
+            }
+
+            // Search in asset table
+            for (var j = 1; j < assetRows.length; j++) {
+                var assetCell = assetRows[j].getElementsByTagName("td")[0];
+                if (assetCell) {
+                    if (assetCell.innerHTML.indexOf(empID) > -1) {
+                        assetRows[j].style.display = "";
+                    } else {
+                        assetRows[j].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

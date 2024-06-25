@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>User Details</h1>
+
+    <!-- Employee Details -->
+    <center>
+        <h2>Employee Details</h2>
+    </center>
+    <table>
+        <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Designation</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>Location</th>
+            <th>Contact No</th>
+            <th>Mail ID</th>
+            <th>Role</th>
+            <th>Type</th>
+        </tr>
+        <tr>
+            <td>{{.Data.details.empID}}</td>
+            <td>{{.Data.details.firstName}}</td>
+            <td>{{.Data.details.lastName}}</td>
+            <td>{{.Data.details.designation}}</td>
+            <td>{{.Data.details.gender}}</td>
+            <td>{{.Data.details.dob}}</td>
+            <td>{{.Data.details.location}}</td>
+            <td>{{.Data.details.contactNo}}</td>
+            <td>{{.Data.details.mailID}}</td>
+            <td>{{.Data.details.role}}</td>
+            <td>{{.Data.details.type}}</td>
+        </tr>
+    </table>
+
+    <!-- Asset Details -->
+    <center>
+        <h2>Asset Details</h2>
+    </center>
+    <table>
+        <tr>
+            <th>Laptop Model</th>
+            <th>Operating System</th>
+            <th>Asset Type</th>
+            <th>Image URL</th>
+            <th>Mouse Model</th>
+            <th>Asset Type</th>
+            <th>Image URL</th>
+            <th>Headphones Model</th>
+            <th>Asset Type</th>
+            <th>Image URL</th>
+        </tr>
+        <tr>
+            <td>{{.Data.assets.Laptop.modelNumber}}</td>
+            <td>{{.Data.assets.Laptop.operatingSystem}}</td>
+            <td>{{.Data.assets.Laptop.assettype}}</td>
+            <td>{{.Data.assets.Laptop.imageurl}}</td>
+            <td>{{.Data.assets.Mouse.modelnumber}}</td>
+            <td>{{.Data.assets.Mouse.assettype}}</td>
+            <td>{{.Data.assets.Mouse.imageurl}}</td>
+            <td>{{.Data.assets.Headphones.modelnumber}}</td>
+            <td>{{.Data.assets.Headphones.assettype}}</td>
+            <td>{{.Data.assets.Headphones.imageurl}}</td>
+        </tr>
+    </table>
+</body>
+
+</html>
